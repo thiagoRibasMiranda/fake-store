@@ -1,10 +1,16 @@
-import * as React from "react"
+import * as React from 'react';
 import {
-  Text
-} from "@chakra-ui/react"
+  Text,
+} from '@chakra-ui/react';
 
-export const App = () => (
-  <Text>
-    Text
-  </Text>
-)
+export interface Props {
+  text: string;
+}
+
+export function App({ text }: Props): JSX.Element {
+  return (
+    <Text>
+      { text }
+    </Text>
+  );
+}
