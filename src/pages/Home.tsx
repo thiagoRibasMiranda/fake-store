@@ -5,6 +5,7 @@ import {
 import getAllProducts from '../services/getAllProducts';
 import Product from '../ProductInterface';
 import { Loading } from '../components/Loading';
+import { Header } from '../components/Header';
 
 export function Home(): JSX.Element {
   const [products, setProducts] = React.useState<Product[]>([]);
@@ -16,6 +17,7 @@ export function Home(): JSX.Element {
 
   return (
     <div>
+      <Header />
       {
         products
           ? (products.map((product) => (<Text>{product.title}</Text>)))
