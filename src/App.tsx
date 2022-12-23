@@ -1,16 +1,27 @@
 import * as React from 'react';
 import {
+  ChakraProvider,
   Text,
 } from '@chakra-ui/react';
+import getAllCategories from './services/getAllCategories';
+import { Home } from './pages/Home';
+import { ProductDetail } from './pages/ProductDetail';
 
-export interface Props {
-  text: string;
-}
+export function App(): JSX.Element {
+  const [categories, setCategories] = React.useState<string[]>([]);
 
-export function App({ text }: Props): JSX.Element {
+  React.useEffect(() => {
+    getAllCategories()
+      .then((res) => setCategories(res));
+  }, []);
+
   return (
-    <Text>
-      { text }
-    </Text>
+    <ChakraProvider>
+      <div>
+        <Home />
+        <ProductDetail />
+        {categories && categories.map((category) => (<Text>{category}</Text>))}
+      </div>
+    </ChakraProvider>
   );
 }
