@@ -9,7 +9,7 @@ type CartItemType = {
   qtd: number;
 };
 
-type CartItensContextType = {
+export type CartItensContextType = {
   cartItens: CartItemType[];
   saveCartItem: (id: number) => void;
   updateCartItem: (cartItem: CartItemType) => void;
