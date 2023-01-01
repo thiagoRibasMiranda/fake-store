@@ -10,17 +10,23 @@ interface Props {
 
 export function ButtonAddToCart(props: Props): JSX.Element {
   const { productId } = props;
-  const { cartItens, saveCartItem } = React.useContext(CartItensContext) as CartItensContextType;
+  const {
+    cartItens,
+    saveCartItem,
+    updateCartItem,
+  } = React.useContext(CartItensContext) as CartItensContextType;
 
   function handleClick(id: number): void | null {
-    if (cartItens.some((item) => item.id === id)) {
-      return null;
+    const cartItem = cartItens.find((item) => item.id === id);
+    if (cartItem) {
+      const cartItemUpdate = { id, qtd: cartItem.qtd + 1 };
+      return updateCartItem(cartItemUpdate);
     }
     return saveCartItem(id);
   }
 
   return (
-    <Button colorScheme="teal" variant="ghost" onClick={() => handleClick(productId)}>
+    <Button colorScheme="blue" variant="ghost" onClick={() => handleClick(productId)}>
       Add to Cart
     </Button>
   );
