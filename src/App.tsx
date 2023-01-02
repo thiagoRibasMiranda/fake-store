@@ -5,6 +5,7 @@ import {
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import GlobalContext from './context';
 import { Home } from './pages/Home';
+import { ShoppingCart } from './pages/ShoppingCart';
 
 export function App(): JSX.Element {
   return (
@@ -13,6 +14,7 @@ export function App(): JSX.Element {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/shopppingCart" element={<ShoppingCart />} />
           </Routes>
         </BrowserRouter>
       </GlobalContext>
