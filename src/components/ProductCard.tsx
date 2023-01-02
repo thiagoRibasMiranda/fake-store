@@ -7,48 +7,48 @@ import {
   Skeleton,
   HStack,
   useBreakpointValue,
-  useColorModeValue,
+  Center,
 } from '@chakra-ui/react';
 import Product from '../ProductInterface';
+import { ButtonAddToCart } from './ButtonAddToCart';
 
 interface Props {
-  product: Product
+  product: Product,
 }
 
 export function ProductCard(props: Props): JSX.Element {
   const { product } = props;
   const {
-    title, price, image, rating,
+    title, price, image, rating, id,
   } = product;
   return (
-    <Box>
-      <AspectRatio ratio={4 / 3}>
-        <Image
-          src={image}
-          alt={title}
-          draggable="false"
-          fallback={<Skeleton />}
-          borderRadius={useBreakpointValue({ base: 'md', md: 'xl' })}
-        />
-      </AspectRatio>
-      <Text fontWeight="medium" color={useColorModeValue('gray.700', 'gray.400')}>
+    <Box width="150px" border="1px" borderColor="blue.800" borderRadius={useBreakpointValue({ base: 'md', md: 'xl' })}>
+      <Center>
+        <AspectRatio ratio={4 / 4} width="90%" height="80%">
+          <Image
+            src={image}
+            alt={title}
+            draggable="false"
+            fallback={<Skeleton />}
+          />
+        </AspectRatio>
+      </Center>
+      <Text noOfLines={2} fontSize="16px" color="gray.700">
         {title}
       </Text>
       <HStack>
-        <Text fontSize="sm" color={useColorModeValue('gray.600', 'gray.400')}>
-          Rate
-          {rating.rate}
-          {rating.count}
-          Reviews
+        <Text fontSize="12px" color="gray.600">
+          {`Rate ${rating.rate} - ${rating.count} Reviews`}
         </Text>
       </HStack>
       <Text
         as="span"
-        fontWeight="medium"
+        fontSize="14px"
         color="gray.700"
       >
-        {price}
+        {`$${price}`}
       </Text>
+      <ButtonAddToCart productId={id} />
     </Box>
   );
 }
