@@ -14,7 +14,7 @@ export function App(): JSX.Element {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/shopppingCart" element={<ShoppingCart />} />
+            <Route path="/shoppingCart" element={<ShoppingCart />} />
           </Routes>
         </BrowserRouter>
       </GlobalContext>

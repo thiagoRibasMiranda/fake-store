@@ -20,7 +20,7 @@ export function ButtonCartShopping(): JSX.Element {
 
   return (
     <Button p="0" m="0" w="5" h="5" bg="none">
-      <Link to="/cart">
+      <Link to="/shoppingCart">
         <Icon viewBox="0 0 576 512" color="blue.800">
           <path
             fill="currentColor"
