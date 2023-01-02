@@ -4,7 +4,7 @@
 
 import * as React from 'react';
 
-type CartItemType = {
+export type CartItemType = {
   id: number;
   qtd: number;
 };
