@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable react/function-component-definition */
 /* eslint-disable react/jsx-no-constructed-context-values */
 
@@ -13,6 +12,7 @@ export type CartItensContextType = {
   cartItens: CartItemType[];
   saveCartItem: (id: number) => void;
   updateCartItem: (cartItem: CartItemType) => void;
+  deleteCartItem: (id: number) => void;
 };
 
 interface CartItensProviderProps{
@@ -24,7 +24,7 @@ export const CartItensContext = React.createContext<CartItensContextType | null>
 const CartItensProvider: React.FC<CartItensProviderProps> = ({ children }) => {
   const [cartItens, setCartItens] = React.useState<CartItemType[]>([]);
 
-  const saveCartItem = (id: number) => {
+  const saveCartItem = (id: number): void => {
     const newCartItem: CartItemType = {
       id,
       qtd: 1,
@@ -32,7 +32,7 @@ const CartItensProvider: React.FC<CartItensProviderProps> = ({ children }) => {
     setCartItens([...cartItens, newCartItem]);
   };
 
-  const updateCartItem = (cartItem: CartItemType) => {
+  const updateCartItem = (cartItem: CartItemType): void => {
     const newArr = cartItens.map((obj) => {
       if (obj.id === cartItem.id) {
         return { ...obj, qtd: cartItem.qtd };
@@ -42,12 +42,18 @@ const CartItensProvider: React.FC<CartItensProviderProps> = ({ children }) => {
     setCartItens(newArr);
   };
 
+  const deleteCartItem = (id: number): void => {
+    const newArr = cartItens.filter((obj) => obj.id !== id);
+    setCartItens(newArr);
+  };
+
   return (
     <CartItensContext.Provider
       value={{
         cartItens,
         saveCartItem,
         updateCartItem,
+        deleteCartItem,
       }}
     >
       {children}
