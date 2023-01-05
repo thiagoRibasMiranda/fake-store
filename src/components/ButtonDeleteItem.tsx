@@ -14,6 +14,7 @@ export function ButtonDeleteItem(props: Props): JSX.Element {
   const {
     deleteCartItem,
   } = React.useContext(CartItensContext) as CartItensContextType;
+
   const handleClick = (id: number): void => {
     deleteCartItem(id);
   };
