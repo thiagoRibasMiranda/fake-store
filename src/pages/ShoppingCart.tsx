@@ -3,6 +3,7 @@ import { Grid, Text } from '@chakra-ui/react';
 import { Header } from '../components/Header';
 import { CartItem } from '../components/CartItem';
 import { CartItemType, CartItensContext, CartItensContextType } from '../context/cartItensContext';
+import { TotalOrder } from '../components/TotalOrder';
 
 export function ShoppingCart(): JSX.Element {
   const { cartItens } = React.useContext(CartItensContext) as CartItensContextType;
@@ -10,7 +11,7 @@ export function ShoppingCart(): JSX.Element {
   return (
     <div>
       <Header />
-      <Grid templateRows="repeat(5, 1fr)" gap={2} p="2">
+      <Grid templateRows="repeat(1, 1fr)" gap={2} p="2">
         {
           cartItens
             ? (cartItens.map((item: CartItemType) => (
@@ -18,6 +19,7 @@ export function ShoppingCart(): JSX.Element {
             : (<Text>Your cart is empty</Text>)
         }
       </Grid>
+      <TotalOrder />
     </div>
   );
 }
