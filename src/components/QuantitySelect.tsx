@@ -23,18 +23,17 @@ export function QuantitySelect(props: Props): JSX.Element {
   };
 
   return (
-    <div>
-      <NumberInput
-        onChange={(value) => handleChange(value)}
-        value={itemQtd}
-        max={50}
-      >
-        <NumberInputField />
-        <NumberInputStepper>
-          <NumberIncrementStepper />
-          <NumberDecrementStepper />
-        </NumberInputStepper>
-      </NumberInput>
-    </div>
+    <NumberInput
+      onChange={(value) => handleChange(value)}
+      value={itemQtd}
+      max={50}
+      width="15%"
+    >
+      <NumberInputField />
+      <NumberInputStepper>
+        <NumberIncrementStepper />
+        <NumberDecrementStepper />
+      </NumberInputStepper>
+    </NumberInput>
   );
 }
