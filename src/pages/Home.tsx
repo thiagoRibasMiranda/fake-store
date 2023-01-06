@@ -6,6 +6,7 @@ import { Header } from '../components/Header';
 import { StoreCategories } from '../components/StoreCategories';
 import { ProductCard } from '../components/ProductCard';
 import { SkeletonCard } from '../components/SkeletonCard';
+import getProductByCategory from '../services/getProductsByCategory';
 
 export function Home(): JSX.Element {
   const [products, setProducts] = React.useState<Product[]>([]);
@@ -17,10 +18,22 @@ export function Home(): JSX.Element {
       .then(() => setLoading(false));
   }, []);
 
+  const handleClick = (category: string): void => {
+    setLoading(true);
+    if (category === 'AllCategories') {
+      getAllProducts()
+        .then((res) => setProducts(res))
+        .then(() => setLoading(false));
+    }
+    getProductByCategory(category)
+      .then((res) => setProducts(res))
+      .then(() => setLoading(false));
+  };
+
   return (
     <div>
       <Header />
-      <StoreCategories />
+      <StoreCategories handleClick={handleClick} />
       <Grid templateColumns="repeat(5, 1fr)" gap={2} p="2">
         {
           !loading
