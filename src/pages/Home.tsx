@@ -24,10 +24,11 @@ export function Home(): JSX.Element {
       getAllProducts()
         .then((res) => setProducts(res))
         .then(() => setLoading(false));
+    } else {
+      getProductByCategory(category)
+        .then((res) => setProducts(res))
+        .then(() => setLoading(false));
     }
-    getProductByCategory(category)
-      .then((res) => setProducts(res))
-      .then(() => setLoading(false));
   };
 
   return (
