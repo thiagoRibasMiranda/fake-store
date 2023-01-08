@@ -10,12 +10,10 @@ export function TotalOrder(): JSX.Element {
   React.useEffect(() => {
     const arrItens = cartItens;
     async function fetchData(): Promise<void> {
-      let totalItem = 0;
       let total = 0;
       await Promise.all(arrItens.map(async (i) => {
         const item = await getProductById(i.id);
-        totalItem += (i.qtd * Number(item.price));
-        total += totalItem;
+        total += (i.qtd * Number(item.price));
       }));
       setTotalOrder(total);
     }
