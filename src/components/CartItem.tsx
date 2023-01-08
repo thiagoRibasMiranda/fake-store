@@ -9,9 +9,9 @@ import {
 import getProductById from '../services/getProductById';
 import Product from '../ProductInterface';
 import { CartItemType } from '../context/cartItensContext';
-import { SkeletonCard } from './SkeletonCard';
 import { ButtonDeleteItem } from './ButtonDeleteItem';
 import { QuantitySelect } from './QuantitySelect';
+import { SkeletonItem } from './SkeletonItem';
 
 export function CartItem(props: CartItemType): JSX.Element {
   const { id, qtd } = props;
@@ -28,7 +28,7 @@ export function CartItem(props: CartItemType): JSX.Element {
     <div>
       {
         loading
-          ? (<SkeletonCard />)
+          ? (<SkeletonItem />)
           : (
             <Flex direction="row" justify="space-between" align="center">
               <Center width="10%">
