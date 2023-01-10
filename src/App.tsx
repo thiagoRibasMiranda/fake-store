@@ -1,16 +1,23 @@
 import * as React from 'react';
 import {
-  Text,
+  ChakraProvider,
 } from '@chakra-ui/react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import GlobalContext from './context';
+import { Home } from './pages/Home';
+import { ShoppingCart } from './pages/ShoppingCart';
 
-export interface Props {
-  text: string;
-}
-
-export function App({ text }: Props): JSX.Element {
+export function App(): JSX.Element {
   return (
-    <Text>
-      { text }
-    </Text>
+    <ChakraProvider>
+      <GlobalContext>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/shoppingCart" element={<ShoppingCart />} />
+          </Routes>
+        </BrowserRouter>
+      </GlobalContext>
+    </ChakraProvider>
   );
 }
