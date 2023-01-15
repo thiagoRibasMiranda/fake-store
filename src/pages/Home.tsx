@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid } from '@chakra-ui/react';
+import { Box, Grid } from '@chakra-ui/react';
 import getAllProducts from '../services/getAllProducts';
 import Product from '../ProductInterface';
 import { Header } from '../components/Header';
@@ -32,17 +32,20 @@ export function Home(): JSX.Element {
   };
 
   return (
-    <div>
+    <Box width="100%">
       <Header />
       <StoreCategories handleClick={handleClick} />
-      <Grid templateColumns="repeat(5, 1fr)" gap={2} p="2">
+      <Grid templateColumns="repeat(5, 1fr)" gap={2} p="2" background="gray.50" width="100%">
         {
           !loading
             ? (products.map((product) => (
-              <ProductCard product={product} key={product.id} />)))
+              <Box display="flex" justifyContent="center">
+                <ProductCard product={product} key={product.id} />
+              </Box>
+            )))
             : (Array.from(Array(10).keys()).map((item) => (<SkeletonCard key={item} />)))
         }
       </Grid>
-    </div>
+    </Box>
   );
 }
