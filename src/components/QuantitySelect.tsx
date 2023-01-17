@@ -27,7 +27,7 @@ export function QuantitySelect(props: Props): JSX.Element {
       onChange={(value) => handleChange(value)}
       value={itemQtd}
       max={50}
-      width="15%"
+      width="10%"
     >
       <NumberInputField />
       <NumberInputStepper>
