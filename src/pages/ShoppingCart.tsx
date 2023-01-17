@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Text } from '@chakra-ui/react';
+import { Flex, Grid, Text } from '@chakra-ui/react';
 import { Header } from '../components/Header';
 import { CartItem } from '../components/CartItem';
 import { CartItemType, CartItensContext, CartItensContextType } from '../context/cartItensContext';
@@ -19,7 +19,9 @@ export function ShoppingCart(): JSX.Element {
             : (<Text>Your cart is empty</Text>)
         }
       </Grid>
-      <TotalOrder />
+      <Flex justify="flex-end" p="10" pr="75">
+        <TotalOrder />
+      </Flex>
     </div>
   );
 }
