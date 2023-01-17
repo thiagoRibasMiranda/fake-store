@@ -25,7 +25,7 @@ export function TotalOrder(): JSX.Element {
 
   return (
     <Center width="10%">
-      {loading ? (<Spinner />) : (<Text>{`Total: ${totalOrder.toFixed(2)}`}</Text>)}
+      {loading ? (<Spinner />) : (<Text as="b">{`Total: $${totalOrder.toFixed(2)}`}</Text>)}
     </Center>
   );
 }
