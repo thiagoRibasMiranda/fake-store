@@ -6,8 +6,8 @@ import {
   Image,
   Skeleton,
   HStack,
-  useBreakpointValue,
   Center,
+  Flex,
 } from '@chakra-ui/react';
 import Product from '../ProductInterface';
 import { ButtonAddToCart } from './ButtonAddToCart';
@@ -22,7 +22,7 @@ export function ProductCard(props: Props): JSX.Element {
     title, price, image, rating, id,
   } = product;
   return (
-    <Box width="150px" border="1px" borderColor="blue.800" borderRadius={useBreakpointValue({ base: 'md', md: 'xl' })}>
+    <Flex direction="column" width="240px">
       <Center>
         <AspectRatio ratio={4 / 4} width="90%" height="80%">
           <Image
@@ -33,22 +33,26 @@ export function ProductCard(props: Props): JSX.Element {
           />
         </AspectRatio>
       </Center>
-      <Text noOfLines={2} fontSize="16px" color="gray.700">
-        {title}
-      </Text>
-      <HStack>
-        <Text fontSize="12px" color="gray.600">
-          {`Rate ${rating.rate} - ${rating.count} Reviews`}
+      <Box>
+        <Text noOfLines={2} fontSize="16px" color="gray.700">
+          {title}
         </Text>
-      </HStack>
-      <Text
-        as="span"
-        fontSize="14px"
-        color="gray.700"
-      >
-        {`$${price}`}
-      </Text>
-      <ButtonAddToCart productId={id} />
-    </Box>
+        <HStack>
+          <Text fontSize="12px" color="gray.600">
+            {`Rate ${rating.rate} - ${rating.count} Reviews`}
+          </Text>
+        </HStack>
+        <Text
+          as="span"
+          fontSize="16px"
+          color="gray.700"
+        >
+          {`$${price}`}
+        </Text>
+      </Box>
+      <Center mt="auto">
+        <ButtonAddToCart productId={id} />
+      </Center>
+    </Flex>
   );
 }

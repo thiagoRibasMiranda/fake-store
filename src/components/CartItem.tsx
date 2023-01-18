@@ -30,8 +30,8 @@ export function CartItem(props: CartItemType): JSX.Element {
         loading
           ? (<SkeletonItem />)
           : (
-            <Flex direction="row" justify="space-between" align="center">
-              <Center width="10%">
+            <Flex direction="row" justify="space-around" align="center">
+              <Center width="10%" height="70%">
                 <Image
                   src={product?.image}
                   alt={product?.title}
@@ -40,13 +40,13 @@ export function CartItem(props: CartItemType): JSX.Element {
                   width="90%"
                 />
               </Center>
-              <Text noOfLines={1} maxWidth="25%" fontSize="12px" color="gray.700">
+              <Text noOfLines={1} width="15%" fontSize="16px" color="gray.700">
                 {product?.title}
               </Text>
               <QuantitySelect itemId={id} itemQtd={qtd} />
               <Text
                 as="span"
-                fontSize="14px"
+                fontSize="16px"
                 color="gray.700"
               >
                 {`$${product?.price}`}

@@ -19,9 +19,9 @@ export function StoreCategories(props: Props): JSX.Element {
   }, []);
 
   return (
-    <Flex justify="space-evenly" p="1" borderBottom="1px" borderColor="gray.200">
-      <Button fontSize="xs" color="blue.700" onClick={() => handleClick('AllCategories')}>All Categories</Button>
-      {categories && categories.map((category) => (<Button key={category} fontSize="xs" color="blue.700" onClick={() => handleClick(category)}>{category}</Button>))}
+    <Flex justify="space-evenly" p="1">
+      <Button fontSize="md" color="blue.900" bg="none" onClick={() => handleClick('AllCategories')}>All Categories</Button>
+      {categories && categories.map((category) => (<Button key={category} fontSize="md" color="blue.900" bg="none" onClick={() => handleClick(category)}>{category}</Button>))}
     </Flex>
   );
 }
