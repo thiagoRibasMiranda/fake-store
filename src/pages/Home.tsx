@@ -39,8 +39,8 @@ export function Home(): JSX.Element {
         {
           !loading
             ? (products.map((product) => (
-              <Box display="flex" justifyContent="center">
-                <ProductCard product={product} key={product.id} />
+              <Box display="flex" justifyContent="center" key={product.id}>
+                <ProductCard product={product} />
               </Box>
             )))
             : (Array.from(Array(10).keys()).map((item) => (<SkeletonCard key={item} />)))
